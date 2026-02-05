@@ -1,0 +1,128 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <nav class="col-md-3 col-lg-2 d-md-block bg-dark sidebar py-3" style="min-height: 100vh;">
+      <h5 class="text-white px-3 mb-3">Angular Course</h5>
+
+      <!-- Section 1 -->
+      <div class="mb-3">
+        <button
+          class="btn btn-link text-white text-decoration-none w-100 text-start px-3"
+          [class.bg-secondary]="activeSection === 1"
+          (click)="selectSection(1)">
+          Section 1: Data & Events
+        </button>
+        <ul class="nav flex-column" *ngIf="activeSection === 1">
+          @for (lesson of section1Lessons; track lesson.id) {
+            <li class="nav-item">
+              <a
+                class="nav-link text-white-50 ps-4"
+                [class.text-white]="activeLesson === lesson.id"
+                [class.active]="activeLesson === lesson.id"
+                style="cursor: pointer;"
+                (click)="selectLesson(lesson.id)">
+                {{ lesson.id }}. {{ lesson.name }}
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <!-- Section 2 -->
+      <div>
+        <button
+          class="btn btn-link text-white text-decoration-none w-100 text-start px-3"
+          [class.bg-secondary]="activeSection === 2"
+          (click)="selectSection(2)">
+          Section 2: Reusable Components
+        </button>
+        <ul class="nav flex-column" *ngIf="activeSection === 2">
+          @for (lesson of section2Lessons; track lesson.id) {
+            <li class="nav-item">
+              <a
+                class="nav-link text-white-50 ps-4"
+                [class.text-white]="activeLesson === lesson.id"
+                [class.active]="activeLesson === lesson.id"
+                style="cursor: pointer;"
+                (click)="selectLesson(lesson.id)">
+                {{ lesson.id }}. {{ lesson.name }}
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+      <!-- Welcome -->
+      @if (activeLesson === 0) {
+        <div class="text-center py-5">
+          <h1>Angular Course Examples</h1>
+          <p class="lead">Select a lesson from the sidebar to see the example</p>
+          <div class="row mt-5">
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5>Section 1: Displaying Data & Events</h5>
+                  <ul class="list-unstyled text-start">
+                    <li>Property Binding</li>
+                    <li>Attribute Binding</li>
+                    <li>Class & Style Binding</li>
+                    <li>Event Binding & Filtering</li>
+                    <li>Two-way Binding</li>
+                    <li>Pipes (Built-in & Custom)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5>Section 2: Reusable Components</h5>
+                  <ul class="list-unstyled text-start">
+                    <li>Component API</li>
+                    <li>Input & Output Properties</li>
+                    <li>Aliasing Properties</li>
+                    <li>Templates & Styles</li>
+                    <li>View Encapsulation</li>
+                    <li>ng-content & ng-container</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- Section 1 Lessons -->
+      @if (activeSection === 1) {
+        @if (activeLesson === 2) { <app-property-binding></app-property-binding> }
+        @if (activeLesson === 3) { <app-attribute-binding></app-attribute-binding> }
+        @if (activeLesson === 5) { <app-class-binding></app-class-binding> }
+        @if (activeLesson === 6) { <app-style-binding></app-style-binding> }
+        @if (activeLesson === 7) { <app-event-binding></app-event-binding> }
+        @if (activeLesson === 8) { <app-event-filtering></app-event-filtering> }
+        @if (activeLesson === 9) { <app-template-variables></app-template-variables> }
+        @if (activeLesson === 10) { <app-two-way-binding></app-two-way-binding> }
+        @if (activeLesson === 11) { <app-pipes></app-pipes> }
+        @if (activeLesson === 12) { <app-custom-pipes></app-custom-pipes> }
+      }
+
+      <!-- Section 2 Lessons -->
+      @if (activeSection === 2) {
+        @if (activeLesson === 2) { <app-component-api></app-component-api> }
+        @if (activeLesson === 3) { <app-input-properties></app-input-properties> }
+        @if (activeLesson === 4) { <app-aliasing-input></app-aliasing-input> }
+        @if (activeLesson === 5) { <app-output-properties></app-output-properties> }
+        @if (activeLesson === 6) { <app-passing-event-data></app-passing-event-data> }
+        @if (activeLesson === 7) { <app-aliasing-output></app-aliasing-output> }
+        @if (activeLesson === 8) { <app-templates></app-templates> }
+        @if (activeLesson === 9) { <app-styles></app-styles> }
+        @if (activeLesson === 10) { <app-view-encapsulation></app-view-encapsulation> }
+        @if (activeLesson === 11) { <app-ng-content></app-ng-content> }
+        @if (activeLesson === 12) { <app-ng-container></app-ng-container> }
+      }
+    </main>
+  </div>
+</div>
