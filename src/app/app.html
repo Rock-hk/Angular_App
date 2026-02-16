@@ -29,7 +29,7 @@
       </div>
 
       <!-- Section 2 -->
-      <div>
+      <div class="mb-3">
         <button
           class="btn btn-link text-white text-decoration-none w-100 text-start px-3"
           [class.bg-secondary]="activeSection === 2"
@@ -38,6 +38,54 @@
         </button>
         <ul class="nav flex-column" *ngIf="activeSection === 2">
           @for (lesson of section2Lessons; track lesson.id) {
+            <li class="nav-item">
+              <a
+                class="nav-link text-white-50 ps-4"
+                [class.text-white]="activeLesson === lesson.id"
+                [class.active]="activeLesson === lesson.id"
+                style="cursor: pointer;"
+                (click)="selectLesson(lesson.id)">
+                {{ lesson.id }}. {{ lesson.name }}
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <!-- Section 3 -->
+      <div class="mb-3">
+        <button
+          class="btn btn-link text-white text-decoration-none w-100 text-start px-3"
+          [class.bg-secondary]="activeSection === 3"
+          (click)="selectSection(3)">
+          Section 3: Directives
+        </button>
+        <ul class="nav flex-column" *ngIf="activeSection === 3">
+          @for (lesson of section3Lessons; track lesson.id) {
+            <li class="nav-item">
+              <a
+                class="nav-link text-white-50 ps-4"
+                [class.text-white]="activeLesson === lesson.id"
+                [class.active]="activeLesson === lesson.id"
+                style="cursor: pointer;"
+                (click)="selectLesson(lesson.id)">
+                {{ lesson.id }}. {{ lesson.name }}
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <!-- Section 4 -->
+      <div class="mb-3">
+        <button
+          class="btn btn-link text-white text-decoration-none w-100 text-start px-3"
+          [class.bg-secondary]="activeSection === 4"
+          (click)="selectSection(4)">
+          Section 4: Template Forms
+        </button>
+        <ul class="nav flex-column" *ngIf="activeSection === 4">
+          @for (lesson of section4Lessons; track lesson.id) {
             <li class="nav-item">
               <a
                 class="nav-link text-white-50 ps-4"
@@ -61,10 +109,10 @@
           <h1>Angular Course Examples</h1>
           <p class="lead">Select a lesson from the sidebar to see the example</p>
           <div class="row mt-5">
-            <div class="col-md-6">
+            <div class="col-md-6 col-lg-3 mb-3">
               <div class="card">
                 <div class="card-body">
-                  <h5>Section 1: Displaying Data & Events</h5>
+                  <h5>Section 1: Data & Events</h5>
                   <ul class="list-unstyled text-start">
                     <li>Property Binding</li>
                     <li>Attribute Binding</li>
@@ -76,7 +124,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 col-lg-3 mb-3">
               <div class="card">
                 <div class="card-body">
                   <h5>Section 2: Reusable Components</h5>
@@ -87,6 +135,36 @@
                     <li>Templates & Styles</li>
                     <li>View Encapsulation</li>
                     <li>ng-content & ng-container</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <h5>Section 3: Directives</h5>
+                  <ul class="list-unstyled text-start">
+                    <li>ngIf & Hidden Property</li>
+                    <li>ngSwitchCase</li>
+                    <li>ngFor & TrackBy</li>
+                    <li>ngClass & ngStyle</li>
+                    <li>Safe Traversal Operator</li>
+                    <li>Custom Directives</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <h5>Section 4: Template Forms</h5>
+                  <ul class="list-unstyled text-start">
+                    <li>ngModel & Validation</li>
+                    <li>ngForm & ngModelGroup</li>
+                    <li>Styling & Error Messages</li>
+                    <li>Check Boxes & Radios</li>
+                    <li>Drop-down Lists</li>
+                    <li>Disabling Submit Button</li>
                   </ul>
                 </div>
               </div>
@@ -122,6 +200,39 @@
         @if (activeLesson === 10) { <app-view-encapsulation></app-view-encapsulation> }
         @if (activeLesson === 11) { <app-ng-content></app-ng-content> }
         @if (activeLesson === 12) { <app-ng-container></app-ng-container> }
+      }
+
+      <!-- Section 3 Lessons -->
+      @if (activeSection === 3) {
+        @if (activeLesson === 2) { <app-ng-if></app-ng-if> }
+        @if (activeLesson === 3) { <app-hidden-property></app-hidden-property> }
+        @if (activeLesson === 4) { <app-ng-switch-case></app-ng-switch-case> }
+        @if (activeLesson === 5) { <app-ng-for></app-ng-for> }
+        @if (activeLesson === 6) { <app-ng-for-change-detection></app-ng-for-change-detection> }
+        @if (activeLesson === 7) { <app-ng-for-track-by></app-ng-for-track-by> }
+        @if (activeLesson === 8) { <app-leading-asterisk></app-leading-asterisk> }
+        @if (activeLesson === 9) { <app-ng-class></app-ng-class> }
+        @if (activeLesson === 10) { <app-ng-style></app-ng-style> }
+        @if (activeLesson === 11) { <app-safe-traversal></app-safe-traversal> }
+        @if (activeLesson === 12) { <app-custom-directives></app-custom-directives> }
+      }
+
+      <!-- Section 4 Lessons -->
+      @if (activeSection === 4) {
+        @if (activeLesson === 2) { <app-basic-bootstrap-form></app-basic-bootstrap-form> }
+        @if (activeLesson === 3) { <app-types-of-forms></app-types-of-forms> }
+        @if (activeLesson === 4) { <app-ng-model></app-ng-model> }
+        @if (activeLesson === 5) { <app-adding-validation></app-adding-validation> }
+        @if (activeLesson === 6) { <app-specific-validation-errors></app-specific-validation-errors> }
+        @if (activeLesson === 7) { <app-styling-invalid-inputs></app-styling-invalid-inputs> }
+        @if (activeLesson === 8) { <app-cleaner-templates></app-cleaner-templates> }
+        @if (activeLesson === 9) { <app-ng-form></app-ng-form> }
+        @if (activeLesson === 10) { <app-ng-model-group></app-ng-model-group> }
+        @if (activeLesson === 11) { <app-control-classes-directives></app-control-classes-directives> }
+        @if (activeLesson === 12) { <app-disabling-submit></app-disabling-submit> }
+        @if (activeLesson === 13) { <app-working-with-checkboxes></app-working-with-checkboxes> }
+        @if (activeLesson === 14) { <app-working-with-dropdowns></app-working-with-dropdowns> }
+        @if (activeLesson === 15) { <app-working-with-radio-buttons></app-working-with-radio-buttons> }
       }
     </main>
   </div>
